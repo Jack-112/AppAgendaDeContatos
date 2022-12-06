@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppAgendaDeContatos.View.addContato">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="ToolbarItem_Clicked" Text="Salvar" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Nome" TextColor="#BEBEBE" FontAttributes="Bold" FontSize="20" />
+            <Entry x:Name="txt_nome" Text="{Binding nome}" Placeholder="Nome" />
+
+            <Button Text="Informações de trabalho"  Margin="-20,0,0,0" Padding="0,0,120,0" HeightRequest="25" FontAttributes="Bold" Clicked="Button_trabalho_Clicked"/>
+            <Grid x:Name="infoTrabalho" ColumnDefinitions="*, 70" RowDefinitions="Auto" IsVisible="False" Margin="0,-10,0,0">
+                <Entry x:Name="txt_tituloT" Grid.Row="0" Grid.Column="0" Placeholder="Titulo do trabalho" Text="{Binding tituloT}"/>
+                <Entry x:Name="txt_empresa"  Grid.Row="1" Grid.Column="0" Placeholder="Empresa" Text="{Binding empresa}"/>
+                <Image Source="mini"  HeightRequest="0" VerticalOptions="Fill" Scale=".5" Grid.Row="0" Grid.Column="1" />
+                <Button Grid.Row="0" Grid.Column="1" Clicked="btn_mini_infoT_Clicked" Background="transparent"/>
+            </Grid>
+
+            <Button Text="Telefone" Clicked="Button_Clicked"  Margin="-30,0,0,0" Padding="0,0,250,0" FontAttributes="Bold" HeightRequest="25"/>
+            <Grid x:Name="grid_telefone" ColumnDefinitions="*, 91, 70" RowDefinitions="Auto"  Margin="0,-10,0,0" IsVisible="false">
+                <Entry x:Name="txt_numero" Grid.Row="0" Grid.Column="0" Keyboard="Numeric" Placeholder="Telefone" Text="{Binding numero}"/>
+                <Picker x:Name="txt_tp_numero" Title="Tipo de número" TitleColor="DarkOrange" FontAttributes="Bold" TextColor="DarkOrange" Grid.Row="0" Grid.Column="1" SelectedItem="{Binding tpTelefone,FallbackValue='Celular'}">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Celular</x:String>
+                            <x:String>Casa</x:String>
+                            <x:String>Trabalho</x:String>
+                            <x:String>Pager</x:String>
+                            <x:String>Outros</x:String>
+                            <x:String>Rediscar</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Image Source="mini"  HeightRequest="0" VerticalOptions="Fill" Scale=".5" Grid.Row="0" Grid.Column="2" />
+                <Button x:Name="btn_mini" Grid.Row="0" Grid.Column="2" Clicked="btn_mini_telefone_Clicked" Background="transparent"/>
+            </Grid>
+
+            <Button Text="E-mail" Clicked="Button_Clicked_email"  Margin="-30,0,0,0" Padding="0,0,270,0" FontAttributes="Bold" HeightRequest="25"/>
+            <Grid x:Name="email" ColumnDefinitions="*, 70" RowDefinitions="Auto" IsVisible="False" Margin="0,-10,0,0">
+                <Entry x:Name="txt_email" Placeholder="E-mail" Grid.Row="0" Grid.Column="0" Text="{Binding email}"/>
+                <Image Source="mini"  HeightRequest="0" VerticalOptions="Fill" Scale=".5" Grid.Row="0" Grid.Column="1" />
+                <Button Grid.Row="0" Grid.Column="1" Clicked="btn_mini_email_Clicked" Background="transparent"/>
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

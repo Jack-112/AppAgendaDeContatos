@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppAgendaDeContatos.View.inicio">
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Adicionar" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame Style="{StaticResource busca}">
+                <SearchBar x:Name="txt_busca" 
+                           Placeholder="Buscar Contato"
+                           TextChanged="txt_busca_TextChanged" Margin="10" TextColor="black"/>
+            </Frame>
+            <RefreshView x:Name="ref_carregando" IsRefreshing="false" Refreshing="ref_carregando_Refreshing">
+                <ListView x:Name="lst_contatos" ItemSelected="lst_contatos_ItemSelected" Margin="20" >
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                
+                                    <ViewCell.ContextActions>
+                                        <MenuItem Text="Remover" Clicked="MenuItem_Clicked" />
+                                    </ViewCell.ContextActions>
+
+                                    <Grid   ColumnDefinitions="40,*" RowDefinitions="Auto" ColumnSpacing="100"  >
+                                        <Label  Grid.Row="0" Grid.Column="0" Text="{Binding nome[0]}" TextTransform="Uppercase"  HorizontalTextAlignment="Center" FontSize="30" FontAttributes="Bold" TextColor="White"/>
+                                    
+                                        <Label Margin="-60,0,0,0" Grid.Row="0" Grid.Column="1" Text="{Binding nome}" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="White"/>
+                                    
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    
+                </RefreshView>
+            
+        </StackLayout>
+                <!--<StackLayout>
+                    <Label x:Name="txt_nome" FontSize="24" FontAttributes="Bold"/>
+                </StackLayout>-->
+            
+    </ContentPage.Content>
+</ContentPage>
